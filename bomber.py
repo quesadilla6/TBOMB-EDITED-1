@@ -231,14 +231,7 @@ country_codes = {
 
 def banner():
     cprint("""                                                  
-   ████████ ██████                 ██             
-   ▒▒▒██▒▒▒ ██▒▒▒██                ██             
-      ██    ██   ██  ████  ██   ██ ██             
-      ██    ██████▒ ██▒▒██ ███ ███ █████          
-      ██    ██▒▒▒██ ██  ██ ██▒█▒██ ██▒▒██         
-      ██    ██   ██ ██  ██ ██ ▒ ██ ██  ██         
-      ██    ██████▒ ▒████▒ ██   ██ █████▒         
-      ▒▒    ▒▒▒▒▒▒   ▒▒▒▒  ▒▒   ▒▒ ▒▒▒▒▒          
+   BLACKLABEL          
                                          """, 'green')
     print()
 
@@ -439,7 +432,7 @@ def start(target, counter, delay, ch, cc):
         print("             Failed Requests         : ", failed)
         print("==================================================================")
         print("              Use this for fun, not for revenge !!                ")
-        print("              This Bomber Was Created By SpeedX !!                ")
+        print("              This Bomber EDITED BY BLACKLABEL CRADIT 2 OWNER  @SpeedX !! ")
         print("==================================================================")
 
         try:
@@ -462,16 +455,27 @@ def start(target, counter, delay, ch, cc):
     exit()
 
 
+
 os.system("clear")
 banner()
+print('\tChecking For Updates...')
+ver = urllib.request.urlopen(
+"https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version").read().decode('utf-8') 
+verl = ''
 try:
-    urllib.request.urlopen('https://www.google.com')
+    verl = open(".version", 'r').read()
 except Exception:
-    print("You are not connected To Internet!!!")
-    print("\tPlease Connect To Internet To Continue...\n")
-    input('Exiting....\n Press Enter To Continue....')
-    exit()
-
+    pass
+if ver != verl:
+    print('\n\t\tAn Update is Available....')
+    print('\tStarting Update...')
+    update()
+print("Your Version is Up-To-Date")
+print('\n\n\t\t\tStarting TBomb...\n\n')
+try:
+    noti = urllib.request.urlopen(
+        "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify").read().decode('utf-8')
+    noti = noti.upper().strip()
     if len(noti) > 10:
         print('\n\n\tNOTIFICATION: ' + noti + '\n\n')
 except Exception:
@@ -504,24 +508,24 @@ try:
 except Exception:
     type = 0
 if type == 1:
-    nm = int(input("Enter Number of Calls To Send(Maximum 100): "))
+    nm = int(input("Enter Number of Calls To Send(Maximum 15): "))
     if nm > 15:
         print("\t\tYou Have Entered " + str(nm) +
-              ".\n\tNormalizing Value To 100")
+              ".\n\tNormalizing Value To 15")
         nm = 15
-    dl = float(input("Enter Delay time (in seconds) [Recommended 5 sec ] : "))
+    dl = float(input("Enter Delay time (in seconds) [Recommended 10 sec ] : "))
 elif type == 0:
     if cc == "91":
         nm = int(input("Enter Number of Messages To Send(0 For Unlimited): "))
         dl = float(
-            input("Enter Delay time (in seconds) [Recommended 1 sec ] : "))
+            input("Enter Delay time (in seconds) [Recommended 2 sec ] : "))
     else:
         nm = int(input("Enter Number of Messages To Send: "))
         dl = float(
-            input("Enter Delay time (in seconds) [Recommended 5 sec ] : "))
+            input("Enter Delay time (in seconds) [Recommended 10 sec ] : "))
 maxlim = 0
 if cc == "91":
-    maxlim = 5000
+    maxlim = 50000
 else:
     maxlim = 5000
 if nm > maxlim:
@@ -536,13 +540,13 @@ if not cc.strip() == "91":
         print()
         input('Press Enter To Exit....')
         print('\n\n')
-        
+        banner()
         exit()
     cnt = 0
     if pn.strip() == '' or dl <= 0 or nm <= 0 or cc.strip() == '' or cc.find('+') != -1:
         print('\n\n\tSeems Like You Have Given Wrong Inputs...')
         input('\n\t\tPress Enter To Exit...')
-       
+        banner()
         exit()
     ch = [0, 14, 15, 16]
     start(pn, nm, dl, ch, str(cc))
@@ -563,9 +567,9 @@ if cbomb:
     start(pn, nm, dl, chl, str(cc))
     exit()
 if nm == 0:
-    nt = int(input("\tNumber Of Threads(10 to 50) : "))
-    if nt <= 0 or nt >= 50:
-        print('\tTBomb Shows Better Result in 10 to 50 Threads\n\t\tStill Continuing....')
+    nt = int(input("\tNumber Of Threads(10 to 20) : "))
+    if nt <= 0 or nt >= 30:
+        print('\tTBomb Shows Better Result in 10 to 25 Threads\n\t\tStill Continuing....')
     print("\n\nPlease Remember That This Is in Experimental Stage And Is Incredibly Fast...")
     t = [None] * nt
     print("\n\n==================================================================")
@@ -577,7 +581,7 @@ if nm == 0:
     print("             Delay               : ", dl)
     print("==================================================================")
     print("              Use this for fun, not for revenge !!                ")
-    print("              This Bomber Was edited BY BLACKLABEL cradits to owner@speedx !! ")
+    print("              This Bomber Was Created By SpeedX !!                ")
     print("==================================================================")
     input('\n\nPress CTRL+Z To STOP Bomber... \nPress Enter To Start Bomber...\n')
     os.system('rm *.xxx* > /dev/null 2>&1')
@@ -586,14 +590,14 @@ if nm == 0:
         t[i] = threading.Thread(target=infinite, args=(pn, dl, ch, maxlim,))
         t[i].daemon = True
         t[i].start()
-    time.sleep(1)
+    time.sleep(2)
     ci = 0
     while True:
         ci += 1
         l = count_inf
         print("	   Total Number of Requests Sent : ", l)
         if int(l) > maxlim:
-            print('\n\n\tSorry Due To Misuse Of This Script We Only Provide unlimited' +
+            print('\n\n\tSorry Due To Misuse Of This Script We Only Provide ' +
                   str(maxlim) + ' SMS At Once...\n\n')
             input('Press Enter To Exit...')
             os.system('rm *xxx* > /dev/null 2>&1')
